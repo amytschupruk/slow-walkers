@@ -18,8 +18,8 @@ body {
 
 #player {
 	position: absolute;
-	background-color: darkcyan;
-	height: 100px;
+	background: transparent url(../assets/player-sprite.png) 0 0 no-repeat;
+	height: 80px;
 	width: 50px;
 	left: 15%;
 	z-index: 5;
@@ -28,7 +28,7 @@ body {
 
 .walker {
 	position: absolute;
-	height: 100px;
+	height: 80px;
 	width: 50px;
 	background-color: cyan; 
 	right: 50px;
@@ -40,16 +40,22 @@ body {
 	background-color: grey;
 	position: absolute;
 	bottom: 0;
-	top: 70%;
+	top: 75%;
 	width: 100%;
+	border-top: 2px solid black;
 }
 
 #walker1 {
 }
 
-#restart {
-	display: none;
+#score-container {
+	position: absolute;
+	right: 0;
+	width: 100px;
+	border: 1px solid black;
+	text-align: center;
 }
+
 
 .jump {
 	animation: jump_animation 1.2s;
@@ -60,11 +66,8 @@ body {
     bottom: 25%;
   }
   50% {
-	bottom: 70%;
+	bottom: 50%;
   }
- //  75% {
-	// bottom: 60%;
- //  }
   100% {
     bottom: 20%;
   }

@@ -17,19 +17,28 @@
 		<div id="walker1" class="walker"></div>
 		<div id="ground"></div>
 		
+		<div id="score-container">
+			<p>Distance: <span id="score">0.0</span>/1 km</p>
+			<!-- <p>Speed: <span id="speed">0</span></p> -->
+		</div>
+
+		<div id="restart">
+			<p>You have run into a slow-walker, GAME OVER!!!</p> <!-- *** add span of how many km short? *** -->
+			<p>Tweet your results:</p>
+			<button id="restart_button">Restart</button>
+		</div>
+		<div id="win">
+			<p>You've made it through the slow walkers to the destination!</p>
+			<p>Congratulations! Tweet your results:</p>
+			<!-- *** Add twitter *** -->
+		</div>
 	</div>
 
-	<div id="score-container">
-
-		<p>Score: <span id="score">0</span></p>
-		<p>Speed: <span id="speed">10</span></p>
-
-	</div>
-
-	<button id="restart">Restart</button>
 	
 	<!-- *** jQuery CDN *** -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- *** Spritely plugin for games sprites *** -->
+	<script src="public/scripts/jquery.spritely.js"></script>
 	<!-- *** Javascript file *** -->
 	<script src="public/scripts/main.js"></script>
 </body>
