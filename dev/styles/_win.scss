@@ -1,3 +1,12 @@
 #win {
 	display: none;
+	position: absolute;
+	top: 20%;
+	width: 100%;
+	padding: 50px;
+	border: 1px solid black;
+	z-index: 10;
+	text-align: center;
+	display: none;
+	background: white;
 }

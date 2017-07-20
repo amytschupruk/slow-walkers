@@ -14,6 +14,18 @@ body {
 	border: 1px solid black;
 	position: relative;
 	overflow: hidden;
+	background-color: #53c3f8;
+	background-image: url(../assets/skyline.jpg);
+	background-size: cover;
+}
+
+#buildings {
+	position: absolute;
+	width: 100%;
+	height: 700px;
+	bottom: 25%;
+	background-image: url(../assets/buildings.png);
+	z-index: 2;
 }
 
 #player {
@@ -36,6 +48,16 @@ body {
 	bottom: 20%;
 }
 
+.walker2 {
+	position: absolute;
+	height: 80px;
+	width: 50px;
+	background-color: black; 
+	right: 150px;
+	z-index: 5;
+	bottom: 20%;
+}
+
 #ground {
 	background-color: grey;
 	position: absolute;
@@ -45,8 +67,6 @@ body {
 	border-top: 2px solid black;
 }
 
-#walker1 {
-}
 
 #score-container {
 	position: absolute;
@@ -54,6 +74,7 @@ body {
 	width: 100px;
 	border: 1px solid black;
 	text-align: center;
+	z-index: 3;
 }
 
 

@@ -4,9 +4,13 @@ $(function () {
 	//saving HTML objects as variables for JS
 	var container = $('#container');
 	var player = $('#player');
-	$('#player').sprite({ fps: 7, no_of_frames: 4 }); //Spritely plugin
 	var walker = $('.walker');
-	var walker1 = $('#walker1');
+	var buildings = $('#buildings');
+
+	//sprite settings with Spritely plugin
+	$('#player').sprite({ fps: 7, no_of_frames: 4 }); //Spritely plugin frame per second + number of frames
+	$('#buildings').pan({ fps: 35, speed: 4, dir: 'left' });
+
 	var score = $('#score');
 	// var speed_span = $('#speed');
 	var restart = $('#restart');
@@ -22,6 +26,9 @@ $(function () {
 	var player_height = parseInt(player.height());
 	var speed = 10;
 
+	//array of background images 
+	var image_array = ["blue", "red", "green"];
+
 	//player declarations 
 	var go_up = false;
 	var score_updated = false;
@@ -36,34 +43,21 @@ $(function () {
 			win_the_game();
 		} else {
 			var walker_current_position = parseInt(walker.css('right'));
-			//update Distance walked when player successfully jumps over pedestrian
-			// if(walker_current_position > container_width - player_left) {
-			// if (score_updated === false) {
-			// 	score.text((parseFloat(score.text()) + 0.1).toFixed(1));
-			// 	score_updated = true;
-			// }
-			// }
-
 			//check if walker is out of container to reset position
 			if (walker_current_position > container_width) {
-				//***19:40 check for math.random function, may be able to change background img
+
 				walker_current_position = walker_initial_position;
 				//increase speed
 				speed = speed + 1;
+				//change background color
+				walker.css({ "background-color": image_array[1] });
 				//default score updated back to false 
 				score_updated = false;
 			}
-			//CSS right property to increase 10px ever 52 milliseconds
+			//CSS right property to increase 10px ever 50 milliseconds
 			walker.css('right', walker_current_position + speed);
 		}
-	}, 52);
-
-	// $(document).on('keydown', function (e){
-	// 		var key = e.keyCode;
-	// 		if (key === 32 && go_up === false) {
-	// 			go_up = setInterval(up);
-	// 		}
-	// });
+	}, 50);
 
 	$(window).on('click', function (e) {
 		//add "jump" class for CSS animation on click
@@ -76,24 +70,36 @@ $(function () {
 		}
 	});
 
+	//called when player runs into slow-walker, stops game and show "restart" box
 	function stop_the_game() {
 		clearInterval(the_game);
 		game_over = true;
 		restart.slideDown();
-		$('#player').hide();
+		$('#wtf').show();
+		//stop sprite animations
+		$('#player').destroy();
+		$('#buildings').destroy();
 	}
 
 	restart_button.click(function () {
 		location.reload();
 	});
 
+	//stop game + show "win" box when player wins
 	function win_the_game() {
 		clearInterval(the_game);
-		$('#player').hide();
-		win.slideDown();
 		game_over = true;
+		win.slideDown();
+		//stop sprite animations
+		$('#player').destroy();
+		$('#buildings').destroy();
 	}
 
+	// function walker_sprite_change {
+	// 	i = 0
+	// }
+
+	//collision function if player runs into slow-walker
 	function collision($div1, $div2) {
 		var x1 = $div1.offset().left;
 		var y1 = $div1.offset().top;
@@ -112,29 +118,11 @@ $(function () {
 		return true;
 	}
 
+	//updating score + 0.1 (km) to one decimal point
 	function score_update() {
 		if (score_updated === false) {
-			// var current_score = score.text((parseFloat(score.text()) + 0.1).toFixed(1));
 			score.text((parseFloat(score.text()) + 0.1).toFixed(1));
 			score_updated = true;
 		}
 	}
-
-	// $(document).on('keyup', function (e){
-	// 		var key = e.keyCode;
-	// 		if (key === 32) {
-	// 			clearInterval(go_up);
-	// 			go_up = false;
-	// 		}
-	// });
-
-
-	// function go_down() {
-	// 	// player.animate({bottom: "20%"}, 'fast');
-	// 	player.css({bottom: "20%"});
-	// }
-
-	// function up() {
-	// 	player.css({bottom: "60%"});
-	// }
 });
