@@ -2,39 +2,65 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Slow Walkers</title>
+	<title>Slow Walkers Toronto Game</title>
 	<!-- Viewport meta tag -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Google Fonts CDN -->
+	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
-
+	<div class="title">
+		<img src="public/assets/logo.png" alt="slow walkers logo">
+	</div>
 	<div id="container">
-		<div id="buildings"></div>
+		<!-- <div id="buildings"></div> -->
 
 		<div id="player"></div>
 
-		<div id="walker1" class="walker"></div>
-		<div id="wtf"><img src="public/assets/wtf.png" alt=""></div>
+		<div id="walker1" class="walker">
+			<div id="wtf-container">
+				<div id="wtf"><img src="public/assets/wtf.png" alt=""></div>
+			</div>
+		</div>
 		<div id="ground"></div>
 		
 		<div id="score-container">
-			<p>Distance: <span id="score">0.0</span>/1 km</p>
-			<!-- <p>Speed: <span id="speed">0</span></p> -->
+			<p>Distance:</p>
+			<p><span id="score">0.0</span>/1 km</p>
 		</div>
 
-		<div id="restart">
-			<p>You have run into a slow-walker, GAME OVER!!!</p> <!-- *** add span of how many km short? *** -->
-			<p>Tweet your results:</p>
+		<div id="start" class="text-box">
+			<p>This Torontian is rushing to travel 1km by foot. Help her get to her destination through the slow walkers!</p> 
+			<p>Click/tap anywhere on the screen to jump over a slow walker.</p>
+			<button id="start_button">Start game</button>
+		</div>
+
+		<div id="restart" class="text-box">
+			<p>You have run into a slow walker.</p> 
+			<p class="game-over">GAME OVER</p>
+			<button class="twitter">
+				<a class="twitter-share-button"
+				  href="https://twitter.com/intent/tweet">
+				Tweet</a>
+			</button>
 			<button id="restart_button">Restart</button>
 		</div>
-		<div id="win">
+		<div id="win" class="text-box">
 			<p>You've made it through the slow walkers to the destination!</p>
-			<p>Congratulations! Tweet your results:</p>
+			<p>Congratulations!</p>
+			<button class="twitter">
+				<a class="twitter-share-button"
+				  href="https://twitter.com/intent/tweet">
+				Tweet</a>
+			</button>
 			<!-- *** Add twitter *** -->
 		</div>
 	</div>
+	<footer>
+		<p>&copy; 2017 <a href="http://www.amymakesinternet.com" target="_blank">Amy Tschupruk</a> Available for hire!</p>
+	</footer>
 
 	
 	<!-- *** jQuery CDN *** -->
