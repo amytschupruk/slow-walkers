@@ -14,3 +14,32 @@
     bottom: 20%;
   }
 }
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .jump {
+    animation: jump_animation 0.7s;
+  }
+
+  @keyframes jump_animation {
+    0% {
+      bottom: 25%;
+    }
+    50% {
+    bottom: 35%;
+    }
+    100% {
+      bottom: 20%;
+    }
+  }
+}

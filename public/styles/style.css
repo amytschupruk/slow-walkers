@@ -266,7 +266,39 @@ button:hover:before {
 
 /* Portrait tablet and small desktops */
 /* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  #container {
+    width: 100%; }
+  .text-box {
+    right: 0;
+    left: 0; }
+  #player {
+    left: 2.5%; }
+  .walker {
+    right: 30px; } }
+
 /* Landscape phones and down */
+@media (max-width: 480px) {
+  .text-box {
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0; }
+  .title {
+    margin: 20px; }
+  .walker {
+    right: 5px;
+    background: transparent url(../assets/small_walker_1.png) 0 0 no-repeat;
+    height: 40px;
+    width: 25px; }
+  #player {
+    background: transparent url(../assets/small_player.png) 0 0 no-repeat;
+    height: 40px;
+    width: 25px;
+    left: 10%; }
+  #ground {
+    border-top: 1px solid black; } }
+
 #start {
   display: block; }
 
@@ -290,6 +322,28 @@ button:hover:before {
   100% {
     bottom: 20%; } }
 
+/* Portrait tablet and small desktops */
+/* Landscape phone to portrait tablet */
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .jump {
+    -webkit-animation: jump_animation 0.7s;
+            animation: jump_animation 0.7s; }
+  @-webkit-keyframes jump_animation {
+    0% {
+      bottom: 25%; }
+    50% {
+      bottom: 35%; }
+    100% {
+      bottom: 20%; } }
+  @keyframes jump_animation {
+    0% {
+      bottom: 25%; }
+    50% {
+      bottom: 35%; }
+    100% {
+      bottom: 20%; } } }
+
 #restart {
   display: none; }
   #restart button {
@@ -311,5 +365,16 @@ button:hover:before {
 p.game-over {
   font-size: 50px; }
 
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+  p.game-over {
+    font-size: 30px; } }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  p.game-over {
+    font-size: 20px; } }
+
+/* Landscape phones and down */
 #win {
   display: none; }

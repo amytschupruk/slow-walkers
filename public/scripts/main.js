@@ -30,19 +30,28 @@ $(function () {
 		var container_width = parseInt(container.width());
 		var container_height = parseInt(container.height());
 		var walker_initial_position = parseInt(walker.css('right'));
-		var walker_initial_height = parseInt(walker.css('height'));
+		// var walker_initial_height = parseInt(walker.css('height'));
 		var player_left = parseInt(player.css('left'));
 		var player_height = parseInt(player.height());
 		var speed = 10;
+		var mobile_speed = 6;
 
 		//array of background images 
 		var image_array = ["url('public/assets/walker_1.png')", "url('public/assets/walker_2.png')", "url('public/assets/walker_3.png')", "url('public/assets/walker_4.png')", "url('public/assets/walker_5.png')", "url('public/assets/walker_6.png')", "url('public/assets/walker_7.png')", "url('public/assets/walker_8.png')"];
+
+		var small_image_array = ["url('public/assets/small_walker_1.png')", "url('public/assets/small_walker_2.png')", "url('public/assets/small_walker_3.png')", "url('public/assets/small_walker_4.png')", "url('public/assets/small_walker_5.png')", "url('public/assets/small_walker_6.png')", "url('public/assets/small_walker_7.png')", "url('public/assets/small_walker_8.png')"];
 
 		//player declarations 
 		var go_up = false;
 		var score_updated = false;
 		var game_over = false;
-		window.setInterval(score_update, 6500);
+		if (window.matchMedia("(min-width: 700px)").matches) {
+			/* the viewport is at least 700 pixels wide */
+			window.setInterval(score_update, 6000);
+		} else {
+			/* the viewport is less than 700 pixels wide */
+			window.setInterval(score_update, 3500);
+		}
 
 		var the_game = setInterval(function () {
 			//call collision function
@@ -53,16 +62,21 @@ $(function () {
 			} else {
 				var walker_current_position = parseInt(walker.css('right'));
 				//check if walker is out of container to reset position
-				if (walker_current_position > container_width) {
+				if (walker_current_position > container_width && window.matchMedia("(min-width: 481px)").matches) {
 
 					walker_current_position = walker_initial_position;
 					//increase speed
 					speed = speed + 1;
-					//change background color
+					//change walker sprite
 					walker.css('background', image_array[Math.floor(Math.random() * image_array.length)]);
-					// walker.css('background', 'transparent url(../assets/walker2.png) 0 0 no-repeat');
-					// walker.css("background", "url('public/assets/walker2.png')");
-					// background: transparent url(../assets/player-sprite.png) 0 0 no-repeat;
+					//default score updated back to false 
+					score_updated = false;
+				} else if (walker_current_position > container_width && window.matchMedia("(max-width: 480px)").matches) {
+					walker_current_position = walker_initial_position;
+					//increase speed
+					speed = speed + 0.3;
+					//change walker sprite
+					walker.css('background', small_image_array[Math.floor(Math.random() * small_image_array.length)]);
 					//default score updated back to false 
 					score_updated = false;
 				}
